@@ -1,0 +1,96 @@
+#findPage {
+  position: relative;
+  width: 375px;
+  height: 812px;
+  margin: 0 auto;
+  padding: 11px 20px 0;
+  background: var(--white);
+  border: 1px solid red;
+
+  #contentsBox {
+    margin-top: 32px;
+
+    > ul {
+      > li {
+        padding-left: 30px;
+        color: #979797;
+
+        &.active {
+          color: var(--black);
+
+          h3 {
+            &::after {
+              background-color: var(--mainColor);
+            }
+          }
+        }
+
+        &:nth-child(2) {
+          h3 {
+            &::after {
+              content: '2';
+            }
+          }
+        }
+
+        &:nth-child(3) {
+          h3 {
+            &::after {
+              content: '3';
+            }
+          }
+        }
+
+        &:nth-child(4) {
+          h3 {
+            &::after {
+              content: '4';
+            }
+          }
+        }
+
+        > h3 {
+          position: relative;
+          margin-top: 10px;
+          margin-bottom: 10px;
+
+          font-size: 0.875rem;
+          font-weight: 800;
+
+          &::after {
+            position: absolute;
+            top: 0;
+            left: -30px;
+
+            content: '1';
+            width: 1.25rem;
+            height: 1.25rem;
+            border-radius: 50%;
+
+            font-size: 0.75rem;
+            text-align: center;
+
+            line-height: 1.25rem;
+          }
+        }
+      }
+    }
+  }
+
+  .findLine {
+    position: relative;
+    width: 100%;
+    height: 40px;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      left: -20px;
+
+      content: '';
+      width: 1px;
+      height: 100%;
+      background-color: #d5d5d5;
+    }
+  }
+}

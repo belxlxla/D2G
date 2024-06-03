@@ -1,0 +1,153 @@
+// btn
+.mainBtn {
+  width: 100%;
+  height: 40px;
+  background-color: var(--mainColor);
+  border-radius: 10px;
+  cursor: pointer;
+
+  font-size: 0.875rem;
+  font-weight: 800;
+  color: var(--black);
+}
+
+.cancelBtn {
+  width: 100%;
+  height: 40px;
+  background-color: #d9d9d9;
+  border-radius: 10px;
+  cursor: pointer;
+
+  font-size: 0.875rem;
+  font-weight: 800;
+  color: #979797;
+}
+
+.twoBtnBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  > button {
+    max-width: 146px;
+  }
+}
+
+// input
+.inputStyle {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+
+  font-size: 0.75rem;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: #b8b8b8;
+  }
+}
+
+// 라인효과
+.dotLine {
+  margin: 30px 20px;
+  > div {
+    width: 100%;
+    border-bottom: 1px dotted #c9c9c9;
+  }
+}
+.solidLine {
+  margin: 30px 20px;
+  width: 100%;
+  border-bottom: 1px solid var(--black);
+}
+
+// 글자효과
+.char3 {
+  max-width: 5.3ch; /* 3글자에 해당하는 공간 설정 */
+  white-space: nowrap; /* 텍스트를 한 줄로 유지 */
+  overflow: hidden; /* 넘치는 텍스트를 숨김 */
+  text-overflow: ellipsis; /* 넘치는 텍스트를 '...'로 표시 */
+}
+
+.char7 {
+  max-width: 6.3ch; /* 3글자에 해당하는 공간 설정 */
+  white-space: nowrap; /* 텍스트를 한 줄로 유지 */
+  overflow: hidden; /* 넘치는 텍스트를 숨김 */
+  text-overflow: ellipsis; /* 넘치는 텍스트를 '...'로 표시 */
+}
+
+// 두줄효과
+.ellipsis2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.ellipsis3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+// 스크롤바 커스텀
+.scrollBar {
+  width: 200px;
+  height: 200px;
+  overflow-y: scroll;
+}
+
+/* 아래의 모든 코드는 영역::코드로 사용 */
+.scrollBar::-webkit-scrollbar {
+  width: 10px; /* 스크롤바의 너비 */
+}
+
+.scrollBar::-webkit-scrollbar-thumb {
+  height: 30%; /* 스크롤바의 길이 */
+  background: #d9d9d9; /* 스크롤바의 색상 */
+
+  border-radius: 10px;
+}
+
+.scrollBar::-webkit-scrollbar-track {
+  background: transparent; /*스크롤바 뒷 배경 색상*/
+}
+
+// 스크롤바 숨김
+.scrollBar__non {
+  width: 0;
+  height: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+/* 아래의 모든 코드는 영역::코드로 사용 */
+.scrollBar__non::-webkit-scrollbar {
+  width: 0; /* 스크롤바의 너비 */
+}
+
+.scrollBar__non::-webkit-scrollbar-thumb {
+  height: 0; /* 스크롤바의 길이 */
+  background: transparent; /* 스크롤바의 색상 */
+
+  border-radius: 0;
+}
+
+.scrollBar__non::-webkit-scrollbar-track {
+  background: transparent; /*스크롤바 뒷 배경 색상*/
+}
+
+// listBox2용
+.listBox2,
+.pgSliderBox {
+  .swiper-wrapper {
+    align-items: center;
+  }
+}
