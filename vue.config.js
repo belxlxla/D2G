@@ -9,11 +9,11 @@ module.exports = defineConfig({
     historyApiFallback: true,
     proxy: {
       '/api': {
-        target: 'http://devapi.daeng2go.com',
+        target: 'https://devapi.daeng2go.com',
         changeOrigin: true,
-        secure: false,
         pathRewrite: { '^/api': '' },
+        secure: false,
       },
     },
   },
-})
+});

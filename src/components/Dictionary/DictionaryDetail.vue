@@ -164,7 +164,6 @@
 
 <script>
 import { onMounted, ref, watchEffect } from 'vue';
-import axios from 'axios';
 
 export default {
   props: {
@@ -176,14 +175,14 @@ export default {
   setup(props) {
     // 화면에 보여질 데이터
     let imgPath = ref(require('../../assets/images/noImg.png'));
-    let dogName = ref('정보 없음');
-    let origin = ref('정보 없음');
+    let dogName = ref('');
+    let origin = ref('');
     let sociability = ref({ width: 33, text: '나쁨' });
     let aggression = ref({ width: 33, text: '나쁨' });
     let difficulty = ref({ width: 33, text: '나쁨' });
-    let personality = ref('정보 없음');
-    let careInfo = ref('정보 없음');
-    let geneticDiseases = ref('정보 없음');
+    let personality = ref('');
+    let careInfo = ref('');
+    let geneticDiseases = ref('');
 
     // 그래프 text와 width값 확인
     const getProgressData = (item) => {
@@ -231,29 +230,33 @@ export default {
 
     const fetchData = async () => {
       try {
-        const res = await axios.get('/api/breed/list', {
+        const response = await fetch(`${process.env.VUE_APP_API_BASE_URL}/breed/list`, {
+          method: 'GET',
           headers: {
-            accept: 'application/json',
+            Accept: 'application/json',
           },
         });
+        console.log(response);
 
         // id
         const idValue = props.id;
         const propsId = parseInt(idValue);
-        console.log(propsId);
 
-        const { code, data, msg } = res.data;
+        if (!response.ok) {
+          throw new Error(`Error status: ${response.status}`);
+        }
+
+        const res = await response.json();
+        const { code, data, msg } = res;
 
         if (code !== '200') {
           console.error('API 오류:', msg);
         } else {
-          // console.log(data);
+          console.log(data);
         }
 
-        // 임시로 0번째 객체 선택함
-        // const seletedData = data.find((item) => item.id === propsId);
-        const seletedData = data[1];
-        // console.log(seletedData);
+        // propsId와 일치하는 breedIdx
+        const seletedData = data.find((item) => item.breedIdx === propsId);
         if (!seletedData) {
           console.error('해당 ID의 데이터가 없습니다.');
           return;

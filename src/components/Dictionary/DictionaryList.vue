@@ -4,7 +4,7 @@
     <ul>
       <!-- v-for를 사용해서 dictionaryList(현재는 script의 data에 dictionaryList 배열)를 뿌려줌 -->
       <li v-for="(el, i) in dictionaryList" :key="i">
-        <router-link :to="`/dictionary/${el.id}`">
+        <router-link :to="`/dictionary/${el.breedIdx}`">
           <div class="img">
             <img :src="checkImagePath(el.imagePath)" :alt="el.name" />
           </div>
@@ -50,31 +50,9 @@
 
 <script>
 import { onMounted, ref } from 'vue';
-import axios from 'axios';
+// import baseURL from '@/store/baseUrl';
 
 export default {
-  data() {
-    return {
-      // dictionaryList: [
-      //   {
-      //     id: 1,
-      //     name: '골든 리트리버',
-      //     origin: '영국',
-      //     sociability: '좋음',
-      //     aggression: '2',
-      //     difficulty: '1',
-      //     weightMale: '30~34kg',
-      //     weightFemale: '25~30kg',
-      //     feedGuide: '2kg',
-      //     personality: '참지않음',
-      //     careInfo: '배고픔',
-      //     geneticDiseases: '탈모',
-      //     hashtag: '뭐라',
-      //     imagePath: 'test_dog3.jpg',
-      //   },
-      // ],
-    };
-  },
   methods: {
     getImage(imageName) {
       return require(`${imageName}`);
@@ -97,18 +75,30 @@ export default {
 
     const fetchData = async () => {
       try {
-        const res = await axios.get('/api/breed/list', {
+        const response = await fetch(`${process.env.VUE_APP_API_BASE_URL}/breed/list`, {
+          method: 'GET',
           headers: {
-            'Content-Type': 'application/json',
+            Accept: 'application/json',
           },
         });
+        console.log(response);
 
-        const { code, data, msg } = res.data;
-        if (code !== '200') {
-          console.error('API 오류:', msg);
-        } else {
-          dictionaryList.value = data;
-          // console.log(dictionaryList.value);
+        if (!response.ok) {
+          throw new Error(`Error status: ${response.status}`);
+        }
+        
+        try {
+          const res = await response.json();
+          const { code, data, msg } = res;
+
+          if (code !== '200') {
+            console.error('API 오류:', msg);
+          } else {
+            dictionaryList.value = data;
+            console.log(dictionaryList.value);
+          }
+        } catch (error) {
+          console.log('json 오류', error);
         }
       } catch (error) {
         console.error('API 호출 오류:', error);

@@ -1,5 +1,5 @@
 :root {
-  --nanum: "nanumSquareNeo";
+  --nanum: 'Nanum Square AC', 'Nanum Square', 'nanumSquareNeo', sans-serif;
 
   --black: #000;
   --black100: #1b1b1b;
@@ -14,14 +14,14 @@
   --white300: #dbdbdb;
   --white400: #a3a3a3;
 
-  --grey: #E5E5E5;
+  --grey: #e5e5e5;
 
   --red: #ff000f;
-  
+
   --mainColor: #eed0a3;
 
   // 폰트 셋팅
-  font-family: var(--mainfont-nanum), sans-serif;
+  font-family: 'Nanum Square AC', 'Nanum Square', var(--nanum), sans-serif;
   font-size: 16px;
   line-height: 1.5;
   font-weight: 400;

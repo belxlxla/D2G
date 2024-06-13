@@ -9,7 +9,7 @@
         <p class="email">{{ email }}</p>
         <p>{{ desc2 }}</p>
       </div>
-      <router-link to="/login">로그인</router-link>
+      <router-link to="/login">로그인 하러 가기</router-link>
     </div>
   </div>
 </template>
@@ -53,7 +53,10 @@ export default {
   .findModalBox {
     width: 335px;
     height: 209px;
-    padding: 20px;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: var(--white);
     border-radius: 10px;
     text-align: right;
@@ -86,9 +89,16 @@ export default {
     }
 
     > a {
+      display: block;
+      width: 100%;
+      height: 40px;
       font-size: 1rem;
       font-weight: 800;
-      color: #eed0a3;
+      text-align: center;
+      line-height: 40px;
+      color: var(--white);
+      background-color: #eed0a3;
+      border-radius: 0 0 10px 10px;
     }
   }
 }

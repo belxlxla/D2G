@@ -8,23 +8,30 @@
 
     <div id="checkBox">
       <div class="allCheckBtn">
+        <p>
+          댕이고 앱 사용을 위한
+          <br />
+          동의가 필요합니다.
+        </p>
+
         <label for="allCheck">
+          <p>전체 동의</p>
+
           <span class="indicator" :class="{ checked: allChecked }"></span>
           <input type="checkbox" id="allCheck" v-model="allChecked" @change="toggleAll" />
-          <p>모두 동의합니다.</p>
-        </label>
+          </label>
       </div>
 
       <ul>
         <li v-for="(el, i) in checkBoxContents" :key="i">
+          <button type="button" @click="openModal(i)">{{ el.title }}</button>
+
           <div class="check">
             <label :for="`check${i}`">
               <span class="indicator" :class="{ checked: checkedList[i] }"></span>
               <input type="checkbox" :id="`check${i}`" v-model="checkedList[i]" @change="updateAllChecked" />
-              <p>{{ el.title }}</p>
             </label>
           </div>
-          <button type="button" @click="openModal(i)">약관보기</button>
         </li>
       </ul>
     </div>
@@ -48,12 +55,28 @@ export default {
     return {
       checkBoxContents: [
         {
-          title: '[필수] 플랫폼의 서비스 이용약관 동의',
-          desc: '플랫폼의 서비스 이용약관 동의 내용 내용 내용 내용 내용 내용 내용',
+          title: '(필수) 서비스 이용약관 >',
+          desc: '플랫폼의 서비스 이용약관 동의',
         },
         {
-          title: '[필수] 개인정보 수집 및 이용동의',
-          desc: '개인정보 수집 및 이용동의 내용 내용 내용 내용 내용 내용 내용 내용',
+          title: '(필수) 개인정보 수집 및 이용에 대한 동의 >',
+          desc: '개인정보 수집 및 이용동의',
+        },
+        {
+          title: '(필수) 개인정보 제3자 제공에 대한 동의 >',
+          desc: '개인정보 제3자 제공의',
+        },
+        {
+          title: '(필수) 개인정보 취급 위탁에 대한 동의 >',
+          desc: '개인정보 수집 및 이용동의',
+        },
+        {
+          title: '(선택) 위치기반 서비스 이용 약관 >',
+          desc: '위치기반 서비스 이용 약관',
+        },
+        {
+          title: '(선택) 마케팅 활용 동의 >',
+          desc: '마케팅 활용 동의',
         },
       ],
       modalOpen: false,
@@ -87,8 +110,8 @@ export default {
       this.checkedList = this.checkBoxContents.map(() => this.allChecked);
     },
     nextPage() {
-      window.location.href = '/#/join/check';
-    }
+      window.location.href = '/join/check';
+    },
   },
   created() {
     this.checkedList = this.checkBoxContents.map(() => false);
@@ -125,11 +148,14 @@ export default {
     margin-top: 20px;
 
     .allCheckBtn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       margin-bottom: 20px;
 
       > label {
         > p {
-          margin: 0 10px 0 33px;
+          margin-right: 43px;
         }
 
         > .indicator {
@@ -165,9 +191,11 @@ export default {
       border-top: 1px solid #d9d9d9;
 
       > li {
+        width: 100%;
         margin: 30px 0;
         display: flex;
         align-items: center;
+        justify-content: space-between;
 
         font-size: 0.875rem;
 
@@ -177,12 +205,9 @@ export default {
 
         button {
           font-size: 0.875rem;
-          color: #eed0a3;
+          color: #bbb;
           background-color: transparent;
           cursor: pointer;
-
-          text-decoration: underline;
-          text-underline-position: under;
         }
       }
     }
@@ -201,7 +226,7 @@ export default {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      left: 0;
+      right: 0;
       width: 15px;
       height: 15px;
       margin-right: 8px;
