@@ -1,11 +1,11 @@
 <template>
-  <!-- 견생백과 리스트 페이지 -->
+  <!-- 견성도감 리스트 페이지 -->
   <section id="dictionaryPage" class="scrollBar__non">
-    <!-- 견생백과 상단 네비게이션 -->
+    <!-- 견성도감 상단 네비게이션 -->
     <DictionaryHeader />
 
     <div id="contentsBox">
-      <!-- 견생백과 리스트 -->
+      <!-- 견성도감 리스트 -->
       <DictionaryList />
     </div>
   </section>

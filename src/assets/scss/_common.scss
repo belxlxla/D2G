@@ -151,3 +151,23 @@
     align-items: center;
   }
 }
+
+// 에러모달
+#errorModal {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  flex-shrink: 0;
+  max-width: 237px;
+  height: 36px;
+  padding: 0 10px;
+  background-color: rgba(255, 0, 15, 0.60);
+  border-radius: 10px;
+
+  font-size: 14px;
+  line-height: 36px;
+  text-align: center;
+  white-space: nowrap;
+  color: var(--white);
+}

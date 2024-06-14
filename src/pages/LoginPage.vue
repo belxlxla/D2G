@@ -25,37 +25,20 @@
         </nav>
       </div>
 
-      <!-- 로그인 입력 창 -->
+      <!-- 로그인 입력 폼 -->
       <form id="loginForm" @submit.prevent="handleSubmit">
         <div class="emailBox">
           <label for="emailUser" class="blind">이메일 입력</label>
-          <input 
-            id="emailUser" 
-            name="emailUser" 
-            type="text" 
-            v-model="emailUser" 
-            placeholder="이메일 입력" 
-            required 
-          />
+          <input id="emailUser" name="emailUser" type="text" v-model="emailUser" placeholder="이메일 입력" required />
+
           <span>@</span>
+
           <label for="customDomain" class="blind">도메인 입력</label>
-          <input 
-            id="customDomain" 
-            name="customDomain" 
-            type="text" 
-            v-model="customDomain" 
-            :disabled="!isCustomDomain" 
-            required 
-          />
+          <input id="customDomain" name="customDomain" type="text" v-model="customDomain" :disabled="!isCustomDomain" required />
+
           <div class="selectBox">
             <label for="emailDomain">도메인 선택</label>
-            <select 
-              id="emailDomain" 
-              name="emailDomain" 
-              v-model="emailDomain" 
-              @change="handleEmailDomainChange" 
-              required
-            >
+            <select id="emailDomain" name="emailDomain" v-model="emailDomain" @change="handleEmailDomainChange" required>
               <option value="self">직접입력</option>
               <option value="gmail.com">gmail.com</option>
               <option value="naver.com">naver.com</option>
@@ -63,21 +46,15 @@
             </select>
           </div>
         </div>
+
         <label for="password" class="blind">비밀번호 입력</label>
-        <input 
-          id="password" 
-          name="password" 
-          type="password" 
-          v-model="password" 
-          placeholder="비밀번호를 입력해주세요."
-          autocomplete="off"
-          required 
-        />
+        <input id="password" name="password" type="password" v-model="password" placeholder="비밀번호를 입력해주세요." autocomplete="off" required />
       </form>
     </div>
+
     <!-- 로그인 버튼 -->
     <div id="btnBox">
-      <button type="submit" class="loginBtn" form="loginForm">로그인</button>
+      <button form="loginForm" type="submit" class="loginBtn">로그인</button>
       <div class="btnNav">
         <ul>
           <li>
@@ -90,6 +67,7 @@
         <router-link to="/join" class="joinBtn">회원가입</router-link>
       </div>
     </div>
+    
     <!-- 약관 / 개인정보 처리방침 -->
     <div id="loginFooter">
       <ul>
@@ -102,6 +80,7 @@
       </ul>
     </div>
 
+    <!-- 에러모달 -->
     <div id="errorModal" v-if="showErrorModal">
       <span>{{ errorMessage }}</span>
     </div>
@@ -164,7 +143,7 @@ export default {
     },
     // 비밀번호 유효성검사
     validatePassword() {
-      if (this.password.length < 6) {
+      if (this.password.length < 8 || this.password.length > 20) {
         this.errors.password = '비밀번호를 확인해주세요.';
         this.showError(this.errors.password);
         return false;
@@ -177,9 +156,10 @@ export default {
       const isPasswordValid = this.validatePassword();
       if (isEmailValid && isPasswordValid) {
         this.email = this.isCustomDomain ? `${this.emailUser}@${this.customDomain}` : `${this.emailUser}@${this.emailDomain}`;
-        console.log('Submitted email:', this.email);
-        console.log('Submitted password:', this.password);
-        // 추가로 폼 제출 시 필요한 작업을 여기에 추가합니다.
+
+        // 확인용
+        // console.log('Submitted email:', this.email);
+        // console.log('Submitted password:', this.password);
       }
     },
   },

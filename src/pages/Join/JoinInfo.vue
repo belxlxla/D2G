@@ -1,6 +1,6 @@
 <template>
-  <section id="findPage">
-    <FindHeader :title="'가입 정보 입력'" />
+  <section id="joinPage" class="scrollBar__non">
+    <FindHeader :title="'회원 가입'" />
 
     <div id="contentsBox">
       <ul>
@@ -21,27 +21,23 @@
         </li>
       </ul>
     </div>
-
-    <JoinFooter />
   </section>
 </template>
 
 <script>
 import FindHeader from '@/components/Find/FindHeader.vue';
-import JoinFooter from '@/components/Join/JoinFooter.vue';
 import JoinInformation from '@/components/Join/JoinInformation.vue';
 
 export default {
   components: {
     FindHeader,
-    JoinFooter,
     JoinInformation,
   },
 };
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/scss/layout/findPage.scss';
+@import '@/assets/scss/layout/joinPage.scss';
 
 #contentsBox {
   > ul {

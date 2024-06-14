@@ -1,9 +1,9 @@
 <template>
-  <!-- 견생백과 상단 네비게이션 -->
+  <!-- 견성도감 상단 네비게이션 -->
   <div id="dictionaryHeader">
     <nav>
       <h2 class="title">
-        견종백과
+        견성도감
       </h2>
       <ul>
         <li>

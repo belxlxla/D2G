@@ -10,6 +10,20 @@
   #contentsBox {
     margin-top: 32px;
 
+    &.findId{
+      h3 {
+        &::after {
+          display: none;
+        }
+      }
+
+      .verificationContainer {
+        &::after {
+          display: none;
+        }
+      }
+    }
+
     > ul {
       > li {
         padding-left: 30px;
@@ -74,6 +88,32 @@
           }
         }
       }
+    }
+  }
+
+  .verificationContainer {
+    position: relative;
+    padding: 5px 0 30px;
+  
+    &::after {
+      position: absolute;
+      top: 0;
+      left: -20px;
+      content: '';
+      width: 1px;
+      height: 100%;
+      background-color: #d5d5d5;
+    }
+  
+    > p {
+      font-size: 0.75rem;
+      margin-bottom: 10px;
+    }
+  
+    a {
+      display: block;
+      text-align: center;
+      line-height: 40px;
     }
   }
 

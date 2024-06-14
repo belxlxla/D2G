@@ -1,5 +1,5 @@
 <template>
-  <!-- 견종백과 '디테일'  -->
+  <!-- 견성도감 '디테일'  -->
   <div class="dictionaryDetail">
     <div class="type">
       <div class="img">
@@ -174,7 +174,7 @@ export default {
   },
   setup(props) {
     // 화면에 보여질 데이터
-    let imgPath = ref(require('../../assets/images/noImg.png'));
+    let imgPath = ref('');
     let dogName = ref('');
     let origin = ref('');
     let sociability = ref({ width: 33, text: '나쁨' });
@@ -251,8 +251,6 @@ export default {
 
         if (code !== '200') {
           console.error('API 오류:', msg);
-        } else {
-          console.log(data);
         }
 
         // propsId와 일치하는 breedIdx
@@ -260,6 +258,8 @@ export default {
         if (!seletedData) {
           console.error('해당 ID의 데이터가 없습니다.');
           return;
+        } else {
+          console.log(seletedData);
         }
 
         imgPath.value = checkImagePath(seletedData.imgPath);

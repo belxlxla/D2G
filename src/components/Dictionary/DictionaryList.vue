@@ -1,5 +1,5 @@
 <template>
-  <!-- 견종백과 '리스트' -->
+  <!-- 견성도감 '리스트' -->
   <div class="dictionaryList">
     <ul>
       <!-- v-for를 사용해서 dictionaryList(현재는 script의 data에 dictionaryList 배열)를 뿌려줌 -->

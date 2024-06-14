@@ -6,8 +6,9 @@
       <div class="text">
         <h3>{{ title }}</h3>
         <p>{{ desc1 }}</p>
-        <p class="email">{{ email }}</p>
-        <p>{{ desc2 }}</p>
+        <p>
+          <span class="email">{{ email }}</span> {{ desc2 }}
+        </p>
       </div>
       <router-link to="/login">로그인 하러 가기</router-link>
     </div>
@@ -80,23 +81,22 @@ export default {
         &:last-child {
           margin-bottom: 0;
         }
-
-        &.email {
-          color: #ffb13b;
-          font-weight: 800;
-        }
+      }
+      .email {
+        color: #ffb13b;
+        font-weight: 800;
       }
     }
 
     > a {
       display: block;
       width: 100%;
-      height: 40px;
+      height: 58px;
       font-size: 1rem;
       font-weight: 800;
       text-align: center;
-      line-height: 40px;
-      color: var(--white);
+      line-height: 58px;
+      color: var(--black);
       background-color: #eed0a3;
       border-radius: 0 0 10px 10px;
     }

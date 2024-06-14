@@ -11,18 +11,8 @@
           <h3>비밀번호 초기화</h3>
 
           <!-- 본인인증 -->
-          <!-- 아이디 찾기, 비밀번호 찾기, 회원가입에 공용으로 사용되어 props로 앞에 들어갈 글자를 전달해서 사용 -->
-          <FindVerification :desc="'비밀번호를 초기화하시려면'" />
-        </li>
-
-        <li>
-          <h3>인증 요청</h3>
-          <div class="findLine"></div>
-        </li>
-
-        <li>
-          <h3>인증 확인</h3>
-          <div class="findLine"></div>
+          <!-- 아이디 찾기, 비밀번호 찾기, 회원가입에 공용으로 사용되어 props로 설명을 전달해서 사용 -->
+          <FindVerification :desc="'비밀번호를 초기화하시려면 아래 본인 인증을 완료하세요.'" />
         </li>
 
         <li>
@@ -30,21 +20,16 @@
         </li>
       </ul>
     </div>
-
-    <!-- 찾기 하단 로그인 버튼 -->
-    <FindFooter />
   </section>
 </template>
 
 <script>
 import FindHeader from '@/components/Find/FindHeader.vue';
-import FindFooter from '@/components/Find/FindFooter.vue';
 import FindVerification from '@/components/Find/FindVerification.vue';
 
 export default {
   components: {
     FindHeader,
-    FindFooter,
     FindVerification,
   },
 };
