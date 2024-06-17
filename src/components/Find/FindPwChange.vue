@@ -114,7 +114,7 @@ export default {
         this.showError(this.errorMessage = '비밀번호가 일치하지 않습니다.');
         return;
       }
-      alert('비밀번호가 성공적으로 변경되었습니다!');
+      window.location.href = '/find/password/success';
     },
   }
 };
@@ -161,19 +161,16 @@ export default {
       background-color: transparent;
       cursor: pointer;
       width: 20px;
-
-      img {
-        opacity: 0.3;
-      }
     }
   }
 
   .beware {
-    margin: 10px 0;
+    margin: 10px 0 20px;
     display: flex;
     align-items: flex-start;
 
     font-size: 0.75rem;
+    font-weight: 700;
 
     img {
       width: 0.75rem;

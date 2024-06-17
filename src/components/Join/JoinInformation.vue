@@ -1,9 +1,12 @@
 <template>
   <!-- 회원정보 입력 -->
   <div class="joinInfo">
+    <p class="desc">로그인 정보 및 가입 정보를 입력하세요.</p>
+
     <form id="joinForm" @submit.prevent="handleSubmit">
+      <h3>회원 정보 입력</h3>
       <!-- 이메일 주소 입력 -->
-      <fieldset>
+      <fieldset class="emailFieldset">
         <legend>
           이메일 주소
 
@@ -14,13 +17,17 @@
         <div class="emailContainer">
           <div class="emailBox">
             <label for="emailUser" class="blind">이메일 입력</label>
-            <input v-model="emailUser" class="inputStyle" id="emailUser" name="emailUser" type="text" placeholder="이메일 입력" required />
+            <input v-model="emailUser" class="inputStyle" id="emailUser" name="emailUser" type="text" placeholder="이메일 주소" required />
+
             <span>@</span>
-            <label for="customDomain" class="blind">도메인 입력</label>
-            <input v-model="customDomain" class="inputStyle" id="customDomain" name="customDomain" type="text" :disabled="!isCustomDomain" required />
-            <div class="selectBox">
+
+            <label v-if="emailDomain === 'self'" for="customDomain" class="blind">도메인 입력</label>
+            <input v-if="emailDomain === 'self'" v-model="customDomain" class="inputStyle" id="customDomain" name="customDomain" type="text" :disabled="!isCustomDomain" required />
+
+            <div v-if="emailDomain !== 'self'" class="selectBox">
               <label for="emailDomain">도메인 선택</label>
-              <select v-model="emailDomain" id="emailDomain" name="emailDomain" @change="handleEmailDomainChange" required>
+              <select v-model="emailDomain" class="inputStyle" id="emailDomain" name="emailDomain" @change="handleEmailDomainChange" required>
+                <option value="default">선택</option>
                 <option value="self">직접입력</option>
                 <option value="gmail.com">gmail.com</option>
                 <option value="naver.com">naver.com</option>
@@ -28,14 +35,14 @@
               </select>
             </div>
             <div>
-              <button type="button" @click="checkDuplicateId">중복확인</button>
+              <button class="mainBtn" type="button" @click="checkDuplicateId">중복확인</button>
             </div>
           </div>
         </div>
       </fieldset>
 
       <!-- 비밀번호 입력 -->
-      <fieldset>
+      <fieldset class="passwordFieldset">
         <legend>
           비밀번호
 
@@ -65,7 +72,7 @@
       </fieldset>
 
       <!-- 개인정보 입력 -->
-      <fieldset>
+      <fieldset class="privacyFieldset">
         <legend class="blind">개인정보</legend>
         <div class="nameBox">
           <label for="name">이름</label>
@@ -85,39 +92,65 @@
       </fieldset>
 
       <!-- 선택항목 입력 -->
-      <fieldset>
-        <legend>선택항목</legend>
+      <h3>선택항목</h3>
+      <fieldset class="selectFieldset">
+        <legend class="blind">선택항목</legend>
+
         <div class="jobBox">
-          <select v-model="job" name="job" id="job">
-            <option value="default">직업을 선택하세요.</option>
-            <option value="job1">직업1</option>
-            <option value="job2">직업2</option>
-          </select>
+          <h4>직업</h4>
+
+          <div class="selectBox">
+            <label for="job">직업</label>
+            <select v-model="job" class="inputStyle" name="job" id="job">
+              <option value="default">직업을 선택하세요.</option>
+              <option value="job1">직업1</option>
+              <option value="job2">직업2</option>
+            </select>
+          </div>
         </div>
+
         <div class="hobbyBox">
-          <select v-model="hobby" name="hobby" id="hobby">
-            <option value="default">취미를 선택하세요.</option>
-            <option value="hobby1">취미1</option>
-            <option value="hobby2">취미2</option>
-          </select>
+          <h4>취미</h4>
+
+          <div class="selectBox">
+            <label for="hobby">취미</label>
+            <select v-model="hobby" class="inputStyle" name="hobby" id="hobby">
+              <option value="default">취미를 선택하세요.</option>
+              <option value="hobby1">취미1</option>
+              <option value="hobby2">취미2</option>
+            </select>
+          </div>
         </div>
+
         <div class="likeDog">
-          <select v-model="likeDog" name="likeDog" id="likeDog">
-            <option value="default">좋아하는 견종을 선택하세요.</option>
-            <option value="breed1">견종1</option>
-            <option value="breed2">견종2</option>
-          </select>
+          <h4>좋아하는 견종</h4>
+
+          <div class="selectBox">
+            <label for="likeDog">좋아하는 견종</label>
+            <select v-model="likeDog" class="inputStyle" name="likeDog" id="likeDog">
+              <option value="default">좋아하는 견종을 선택하세요.</option>
+              <option value="breed1">견종1</option>
+              <option value="breed2">견종2</option>
+            </select>
+          </div>
         </div>
+
         <div class="address">
           <label for="address">거주지역</label>
-          <input v-model="address" type="text" id="address" name="address" placeholder="시/도-군/구까지 입력하세요.(ex)서울시 강남구" />
+          <input v-model="address" type="text" class="inputStyle" id="address" name="address" placeholder="시/도-군/구까지 입력하세요.(ex)서울시 강남구" />
         </div>
+
         <div class="birthTime">
-          <select v-model="birthTime" name="birthTime" id="birthTime">
-            <option value="default">태어난 시간을 선택하세요.</option>
-            <option value="time1">시간1</option>
-            <option value="time2">시간2</option>
-          </select>
+          <h4>태어난 시간</h4>
+
+          <div class="selectBox">
+            <label for="birthTime">태어난 시간</label>
+            <select v-model="birthTime" class="inputStyle" name="birthTime" id="birthTime">
+              <option value="default">태어난 시간을 선택하세요.</option>
+              <option value="time1">시간1</option>
+              <option value="time2">시간2</option>
+            </select>
+          </div>
         </div>
       </fieldset>
 
@@ -133,7 +166,7 @@ export default {
     return {
       // 이메일
       emailUser: '',
-      emailDomain: 'self',
+      emailDomain: 'default',
       customDomain: '',
       isCustomDomain: true,
       // 비밀번호
@@ -143,7 +176,7 @@ export default {
       passwordCheck: '',
       // 개인정보 (인증정보)
       name: 'ㅇㅇㅇ',
-      birthDay: 'YYYY.MM.DD',
+      birthDay: '1234.56.78',
       mobile: '010-1234-5678',
       // 선택사항
       job: 'default',
@@ -253,8 +286,23 @@ export default {
       const isPersonalInfoValid = this.validatePersonalInfo();
       // const isEmailUnique = await this.checkDuplicateId();
 
-      if (!isEmailValid || !isPasswordValid || !isPersonalInfoValid) {
-        return;
+      if (isEmailValid && isPasswordValid && isPersonalInfoValid) {
+        console.log(isEmailValid);
+        console.log(isPasswordValid);
+        console.log(isPersonalInfoValid);
+
+        this.email = this.isCustomDomain ? `${this.emailUser}@${this.customDomain}` : `${this.emailUser}@${this.emailDomain}`;
+        console.log('email:', this.email);
+        console.log('password:', this.password);
+        console.log('name:', this.name);
+        console.log('birthDay:', this.birthDay);
+        console.log('mobile:', this.mobile);
+
+        console.log('job:', this.job);
+        console.log('hobby:', this.hobby);
+        console.log('likeDog:', this.likeDog);
+        console.log('address:', this.address);
+        console.log('birthTime:', this.birthTime);
       }
 
       // 이메일 중복검사 포함
@@ -262,13 +310,7 @@ export default {
       //   return;
       // }
 
-      this.email = this.isCustomDomain ? `${this.emailUser}@${this.customDomain}` : `${this.emailUser}@${this.emailDomain}`;
-      console.log('Submitted email:', this.email);
-      console.log('Submitted password:', this.password);
-      console.log('Submitted name:', this.name);
-      console.log('Submitted birthDay:', this.birthDay);
-      console.log('Submitted mobile:', this.mobile);
-      // 추가적인 제출 로직 수행
+      return;
     },
   },
 };
@@ -277,25 +319,66 @@ export default {
 <style lang="scss" scoped>
 .joinInfo {
   position: relative;
-  padding: 5px 0 30px;
   width: 100%;
   height: 100%;
 
-  &::after {
-    position: absolute;
-    top: 0;
-    left: -20px;
-
-    content: '';
-    width: 1px;
-    height: 100%;
-    background-color: #d5d5d5;
+  .desc {
+    margin-bottom: 40px;
+    font-size: 0.875rem;
+    text-align: center;
   }
 
   form {
+    > h3 {
+      margin-left: 20px;
+      margin-bottom: 18px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
     fieldset {
       margin: 0;
       border: 0;
+      padding: 0 20px;
+
+      &.emailFieldset {
+        margin-bottom: 18px;
+      }
+
+      &.passwordFieldset {
+        margin-bottom: 28px;
+      }
+
+      &.privacyFieldset {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 40px;
+
+        label {
+          display: block;
+          margin-bottom: 10px;
+          font-size: 0.75rem;
+        }
+      }
+
+      &.selectFieldset {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        h4,
+        .address > label {
+          display: block;
+          margin-bottom: 10px;
+          font-size: 0.75rem;
+        }
+      }
+
+      legend {
+        font-size: 0.75rem;
+        margin-bottom: 10px;
+      }
     }
 
     > div {
@@ -316,46 +399,33 @@ export default {
     }
 
     .emailContainer {
-      margin-bottom: 20px;
-
       .emailBox {
-      display: flex;
-      align-items: center;
-      flex-direction: row;
-     
-      span {
-        margin: 0 5px;
-      }
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        gap: 6px;
 
-      .selectBox {
-        position: relative;
-        label {
-          position: absolute;
-          top: 50%;
-          right: 3px;
-          transform: translateY(-50%) rotate(90deg);
-          width: 10px;
-          height: 10px;
-          background-image: url(/src/assets/images/icon/icon_nav_arrow_right.svg);
-          background-position: 50%;
-          background-repeat: no-repeat;
-          background-size: 5px;
-          font-size: 0;
+        #emailUser {
+          max-width: 100px;
+        }
+
+        span {
+          font-size: 0.75rem;
+        }
+
+        #customDomain {
+          max-width: 113px;
         }
 
         select {
-          height: 40px;
-          margin-left: 5px;
-          padding: 0 15px 0 5px;
-          border: 1px solid #e5e5e5;
-          border-radius: 10px;
-          font-size: 0.7rem;
-          text-align: center;
+          width: 113px;
+        }
+
+        .mainBtn {
+          width: 92px;
         }
       }
     }
-    }
-   
 
     .passwordBox {
       .passwordInput {
@@ -378,20 +448,48 @@ export default {
           background-color: transparent;
           cursor: pointer;
           width: 20px;
-
-          img {
-            opacity: 0.3;
-          }
         }
       }
     }
 
+    .selectBox {
+      position: relative;
+      label {
+        position: absolute;
+        top: 50%;
+        right: 5px;
+        transform: translateY(-50%) rotate(90deg);
+        width: 10px;
+        height: 10px;
+        background-image: url(/src/assets/images/icon/icon_nav_arrow_right.svg);
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: 5px;
+        font-size: 0;
+      }
+
+      select {
+        height: 40px;
+        padding: 0 15px 0 10px;
+        border-radius: 10px;
+        font-size: 0.7rem;
+      }
+    }
+
+    > .mainBtn {
+      margin-top: 76px;
+      height: 70px;
+      font-size: 1.375rem;
+      border-radius: 0;
+    }
+
     .beware {
-      margin: 10px 0;
+      margin: 10px 0 0;
       display: flex;
       align-items: flex-start;
 
       font-size: 0.75rem;
+      font-weight: 700;
 
       img {
         width: 0.75rem;

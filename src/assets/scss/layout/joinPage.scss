@@ -9,6 +9,10 @@
   overflow-x: hidden;
   overflow-y: auto;
 
+  &.info {
+    padding: 11px 0 0;
+  }
+
   #contentsBox {
     margin-top: 32px;
 

@@ -22,7 +22,7 @@
 
     <!-- 찾기 모달 -->
     <!-- 아이디 찾기, 비밀번호 초기화에서 공용으로 사용, props로 글자를 전달해서 사용 -->
-    <FindModal :title="'비밀번호 변경 완료'" :desc1="'아이디'" :email="'email@email.com'" :desc2="'의 비밀번호가 변경 완료되었습니다.'" />
+    <FindModal :title="'비밀번호 변경 완료'" :email="'email@email.com'" :desc2="'의 비밀번호가 변경 완료되었습니다.'" />
   </section>
 </template>
 

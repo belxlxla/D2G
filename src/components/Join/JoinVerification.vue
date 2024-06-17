@@ -23,7 +23,11 @@
 
       <ul>
         <li v-for="(el, i) in checkBoxContents" :key="i">
-          <button type="button" @click="openModal(i)">{{ el.title }} ></button>
+          <div class="title">
+          <p>{{ el.title }}</p>
+          <button type="button" @click="openModal(i)">약관보기</button>
+          </div>
+
           <div class="check">
             <label :for="`check${i}`">
               <span class="indicator" :class="{ checked: checkedList[i] }"></span>
@@ -54,32 +58,32 @@ export default {
       // 약관정보
       checkBoxContents: [
         {
-          title: '(필수) 서비스 이용약관',
+          title: '[필수] 서비스 이용약관 동의',
           desc: '플랫폼의 서비스 이용약관 동의',
           required: true,
         },
         {
-          title: '(필수) 개인정보 수집 및 이용에 대한 동의',
+          title: '[필수] 개인 정보 수집 및 이용동의',
           desc: '개인정보 수집 및 이용동의',
           required: true,
         },
         {
-          title: '(필수) 개인정보 제3자 제공에 대한 동의',
+          title: '[필수] 개인정보 제3자 제공에 대한 동의',
           desc: '개인정보 제3자 제공의',
           required: true,
         },
         {
-          title: '(필수) 개인정보 취급 위탁에 대한 동의',
+          title: '[필수] 개인정보 취급 위탁에 대한 동의',
           desc: '개인정보 수집 및 이용동의',
           required: true,
         },
         {
-          title: '(선택) 위치기반 서비스 이용 약관',
+          title: '[선택] 위치 기반 서비스 이용 약관 동의',
           desc: '위치기반 서비스 이용 약관',
           required: false,
         },
         {
-          title: '(선택) 마케팅 활용 동의',
+          title: '[선택] 마케팅 활용 동의',
           desc: '마케팅 활용 동의',
           required: false,
         },
@@ -124,7 +128,7 @@ export default {
     },
     // 다음 페이지
     nextPage() {
-      window.location.href = '/join/info';
+      window.location.href = '/join/check';
     },
   },
   created() {
@@ -169,14 +173,15 @@ export default {
 
       > label {
         > p {
-          font-weight: 800;
+          font-size: 0.875rem;
+          font-weight: 700;
           margin-right: 43px;
         }
 
         > .indicator {
           width: 27px;
           height: 27px;
-          border: 1px solid #b3b3b3;
+          border: 1px solid var(--white350);
 
           &::after {
             content: '';
@@ -202,7 +207,7 @@ export default {
       }
 
       > p {
-        font-weight: 800;
+        font-size: 0.875rem;
       }
     }
 
@@ -222,11 +227,23 @@ export default {
           margin: 0;
         }
 
-        button {
+        .title {
+          display: flex;
+          align-items: center;
+          p {
+            font-size: 0.875rem;
+            color: #bbb;
+          }
+
+          button {
+          margin-left: 10px;
           font-size: 0.875rem;
-          color: #bbb;
+          color: var(--mainColor);
           background-color: transparent;
+          text-decoration: underline;
+          text-underline-position: under;
           cursor: pointer;
+        }
         }
       }
     }
@@ -248,11 +265,10 @@ export default {
       right: 0;
       width: 20px;
       height: 20px;
-      margin-right: 8px;
       background-color: transparent;
       border-radius: 4px;
       cursor: pointer;
-      border: 1px solid #b3b3b3;
+      border: 1px solid var(--white350);
 
       &::after {
         content: '';

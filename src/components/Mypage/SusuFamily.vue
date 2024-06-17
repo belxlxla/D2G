@@ -1,7 +1,10 @@
 <template>
   <!-- 수수패밀리 -->
   <section id="susuFamily" :class="{ active: activeFlag }">
-    <h3>SUSU FAMILY</h3>
+    <h3>
+      <span>수영, 수봉, 수표, 수만 |</span>
+      SUSU FAMILY
+    </h3>
     
     <!-- 수수 패밀리 슬라이더 -->
     <swiper :slidesPerView="2" :spaceBetween="10" :centeredSlides="true" class="sliderBox">
@@ -48,6 +51,7 @@
         </div>
       </swiper-slide>
 
+      <!-- 테스트 -->
       <swiper-slide class="slider">
         <div class="infoBox">
           <div class="img">

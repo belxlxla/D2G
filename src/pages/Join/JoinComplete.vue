@@ -3,7 +3,7 @@
     <FindHeader :title="'회원가입'" />
 
     <div id="contentsBox" class="findId">
-      <FindVerification :desc="'시작합니다.'" />
+      <FindVerification :success="'success'" :desc="'완료했습니다.'" />
     </div>
   </section>
 </template>

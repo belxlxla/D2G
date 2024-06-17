@@ -11,11 +11,13 @@ import FindPwChangePage from "@/pages/Find/FindPwChangePage.vue";
 import FindPwSucces from "@/pages/Find/FindPwSucces.vue";
 // 회원가입
 import JoinPage from "@/pages/Join/JoinPage.vue";
+import JoinCheck from "@/pages/Join/JoinCheck.vue";
+import JoinComplete from "@/pages/Join/JoinComplete.vue";
 import JoinInfo from "@/pages/Join/JoinInfo.vue";
 import JoinEasyPassword from "@/pages/Join/JoinEasyPassword.vue";
 // 마이페이지
 import MyPage from "@/pages/MyPage.vue";
-// 견종백과
+// 견성도감
 import DictionaryPage from "@/pages/Dictionary/DictionaryPage.vue";
 import DictionaryDetailPage from "@/pages/Dictionary/DictionaryDetailPage.vue";
 
@@ -60,6 +62,16 @@ const routes = [
     component: JoinPage,
   },
   {
+    path: '/join/check',
+    name: 'JoinCheck',
+    component: JoinCheck,
+  },
+  {
+    path: '/join/complete',
+    name: 'JoinComplete',
+    component: JoinComplete,
+  },
+  {
     path: '/join/info',
     name: 'JoinInfo',
     component: JoinInfo,
@@ -75,7 +87,7 @@ const routes = [
     name: 'MyPage',
     component: MyPage,
   },
-  // 견종백과
+  // 견성도감
   {
     path: '/dictionary',
     name: 'DictionaryPage',

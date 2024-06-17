@@ -7,14 +7,20 @@
   --black300: #494949;
   --black400: #555555;
   --black500: #797979;
+ 
 
   --white: #fff;
+  --white50: #f0f0f0;
   --white100: #eee;
+  --white150: #E8E8E8;
   --white200: #d6d6d6;
   --white300: #dbdbdb;
+  --white350: #b3b3b3;
   --white400: #a3a3a3;
+  
 
   --grey: #e5e5e5;
+  --grey300: #bbb;
 
   --red: #ff000f;
 
@@ -32,9 +38,4 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-
-  // @media (max-width: 800px) {
-  //     font-size: 14px;
-  //     line-height: 1.4;
-  // }
 }

@@ -88,7 +88,7 @@
             <img src="../../assets/images/icon/icon_dogPark.svg" alt="강아지" />
           </div>
 
-          <pre></pre>
+          <pre>골든 리트리버는 사냥꾼들이 총으로 사냥한 새를 물어오는 것 (Retriever)을 목적으로 교배된 사냥개이다. 그래서 발에는 물갈퀴가 있으며 수영을 매우 잘하고, 물에 들어가 수영하는 것을 대체적으로 좋아하고 즐기는 편이다.</pre>
         </div>
 
         <div class="textBox">
@@ -96,7 +96,7 @@
             <img src="../../assets/images/icon/icon_colorLens.svg" alt="파레트" />
           </div>
 
-          <pre></pre>
+          <pre>털의 색깔은 은은한 황금색과 크림빛을 띄며, 구불거리는 풍성한 장모를 지닌 것이 특징이다.</pre>
         </div>
 
         <div class="textBox">
@@ -104,7 +104,7 @@
             <img src="../../assets/images/icon/icon_cognitive.svg" alt="뇌" />
           </div>
 
-          <pre></pre>
+          <pre>지능과 학습능력이 좋은 편, 잘 훈련시킨다면 기르기 편하다.</pre>
         </div>
       </div>
     </div>
@@ -126,7 +126,7 @@
             <img src="../../assets/images/icon/icon_dog.svg" alt="강아지" />
           </div>
 
-          <pre></pre>
+          <pre>이중모 구조를 가지고 있어 털빠짐의 양이 굉장하다. 그리고 선천적인 피부병 발생 위험이 높아 빗질 등을 자주 해 주어 털관리에 신경을 잘 써야 한다.</pre>
         </div>
 
         <div class="textBox">
@@ -134,7 +134,7 @@
             <img src="../../assets/images/icon/icon_bacteria.svg" alt="박테리아" />
           </div>
 
-          <pre></pre>
+          <pre>쉽게 걸릴 수 있는 질병으로는 관절과 안구 관련 질환이다. 퇴행성 관절염, 백내장, 진행성 망막 위축증, 색소 침착성 포도막염 등이 있다. 그 중 대표적인 퇴행성 관절염은 비만 등과 같은 후천적인 요인으로 인해 발생하므로 견주의 각별한 주의가 필요하다.</pre>
         </div>
       </div>
     </div>
@@ -143,12 +143,6 @@
       <h3>대표적인 유전병</h3>
 
       <ul>
-        <!-- <li v-for="(el, i) in geneticDiseases" :key="i">
-          <a href="#">
-            <span>{{ el }}</span>
-            <img src="../../assets/images/icon/icon_questionMark.svg" alt="물음표" />
-          </a>
-        </li> -->
         <li>
           <a href="#">
             <span>{{ geneticDiseases }}</span>
@@ -217,14 +211,14 @@ export default {
     // 이미지 확인
     const checkImagePath = (path) => {
       if (!path) {
-        return require('../../assets/images/noImg.png');
+        return require('../../assets/images/test_dog3.jpg');
       }
       const validExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'];
       const extension = path.split('.').pop().toLowerCase();
       if (validExtensions.includes(extension)) {
         return path;
       } else {
-        return require('../../assets/images/noImg.png');
+        return require('../../assets/images/test_dog3.jpg');
       }
     };
 
@@ -321,13 +315,14 @@ export default {
   }
 
   pre {
+    flex: 1 1 0%;
     overflow: auto;
     white-space: pre-wrap;
-    text-align: left;
     margin: 0;
-
+    
     font-size: 0.875rem;
     font-family: var(--nanum);
+    text-align: left;
     color: var(--black300);
   }
 
@@ -338,7 +333,7 @@ export default {
     width: 30px;
     height: 30px;
     background-color: var(--mainColor);
-    border-radius: 50%;
+    border-radius: 30px;
 
     > img {
       width: 15px;

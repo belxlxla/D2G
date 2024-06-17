@@ -5,9 +5,14 @@
     <div class="findModalBox">
       <div class="text">
         <h3>{{ title }}</h3>
-        <p>{{ desc1 }}</p>
+        <p v-if="desc1.length > 1">
+          {{ desc1 }}
+        </p>
+        <p class="email">{{ email }}</p>
         <p>
-          <span class="email">{{ email }}</span> {{ desc2 }}
+          {{ desc1 }}
+          
+          {{ desc2 }}
         </p>
       </div>
       <router-link to="/login">로그인 하러 가기</router-link>
@@ -24,7 +29,7 @@ export default {
     },
     desc1: {
       type: String,
-      required: true,
+      default: '',
     },
     desc2: {
       type: String,
@@ -48,7 +53,7 @@ export default {
   justify-content: center;
   width: 100%;
   height: 100%;
-  background-color: rgba(000, 000, 000, 0.5);
+  background: rgba(20, 20, 20, 0.88);
   z-index: 10;
 
   .findModalBox {
@@ -67,6 +72,7 @@ export default {
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      margin-bottom: 30px;
 
       h3 {
         font-size: 1.25rem;
@@ -75,13 +81,10 @@ export default {
       }
 
       > p {
-        margin-bottom: 10px;
         font-size: 1rem;
-
-        &:last-child {
-          margin-bottom: 0;
-        }
+        text-align: center;
       }
+
       .email {
         color: #ffb13b;
         font-weight: 800;

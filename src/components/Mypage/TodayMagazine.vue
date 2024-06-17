@@ -3,7 +3,7 @@
   <div class="todayMagazineBox">
     <h3>
       <span>Today Magazine</span>
-      <router-link to="/dictionary">견종백과 더보기 &gt;</router-link>
+      <router-link to="/dictionary">견성도감 더보기 &gt;</router-link>
     </h3>
 
     <div class="magazine">

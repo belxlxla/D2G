@@ -8,7 +8,7 @@
     <div id="contentsBox">
       <ul>
         <li>
-          <h3>비밀번호 초기화</h3>
+          <h3>본인인증</h3>
           <div class="findLine"></div>
         </li>
 

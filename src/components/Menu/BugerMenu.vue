@@ -1,7 +1,7 @@
 <template>
   <!-- 햄버거 메뉴 -->
   <!-- HeaderSection에서 props받은 burgerFlag 상태에 따라 active를 관리하고 메뉴를 나타나게 하고 사라지게 함 -->
-  <div :class="{'burgerMenu': true, 'active' : burgerFlag}">
+  <div :class="{ burgerMenu: true, active: burgerFlag }">
     <div class="userBox">
       <div class="user login">
         <ul>
@@ -29,7 +29,7 @@
         <ul>
           <!-- v-for를 사용해서 burgerNav(script의 data에 burgerNav 배열)를 뿌려줌  -->
           <li v-for="(el, i) in burgerNav" :key="i">
-            <router-link :to="el.link">{{ el.name }}</router-link>
+            <router-link :to="el.link" active-class="active">{{ el.name }}</router-link>
           </li>
         </ul>
       </nav>
@@ -51,21 +51,23 @@
 <script>
 export default {
   props: {
-    burgerFlag : {
+    burgerFlag: {
       type: Boolean,
       required: true,
     },
   },
   data() {
     return {
+      // 메뉴
       burgerNav: [
         { name: '만보기', link: '#' },
-        { name: '견종백과', link: '/dictionary' },
+        { name: '견성도감', link: '/dictionary' },
         { name: '유전자 검사', link: '#' },
         { name: '사주궁합', link: '#' },
         { name: '댕이고 매거진', link: '#' },
         { name: 'About VIVLAB', link: '#' },
       ],
+      // sns
       burgerSns: [
         { name: 'instagram', img: 'icon_instagram.svg', link: '#' },
         { name: 'facebook', img: 'icon_facebook.svg', link: '#' },
@@ -79,7 +81,7 @@ export default {
     },
     closeBurger() {
       this.$emit('close');
-    }
+    },
   },
 };
 </script>
@@ -180,8 +182,10 @@ export default {
         font-weight: 700;
         text-align: right;
 
-        &.active {
-          color: #f3b15b;
+        a {
+          .active {
+            color: #f3b15b;
+          }
         }
       }
     }

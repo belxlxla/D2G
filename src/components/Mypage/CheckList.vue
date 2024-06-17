@@ -55,7 +55,45 @@
     </div>
 
     <!-- 건강검진, 예방접종, 할인쿠폰 슬라이더 -->
-    <swiper :slidesPerView="3" :spaceBetween="6" :centeredSlides="true" class="listBox2">
+    <swiper :slidesPerView="3" :spaceBetween="6" :loop="true" :initialSlide="0" :centeredSlides="true" class="listBox2">
+      <swiper-slide>
+        <div class="list">
+          <div class="icon">
+            <img src="../../assets/images/icon/icon_hospital.svg" alt="병원" />
+          </div>
+          <div class="desc">
+            <p class="title">건강검진</p>
+            <p class="dDay">2일</p>
+          </div>
+        </div>
+      </swiper-slide>
+
+      <swiper-slide>
+        <div class="list">
+          <div class="icon">
+            <img src="../../assets/images/icon/icon_injection.svg" alt="주사" />
+          </div>
+          <div class="desc">
+            <p class="title">예방접종</p>
+            <p>25일</p>
+            <p>경과</p>
+          </div>
+        </div>
+      </swiper-slide>
+
+      <swiper-slide>
+        <div class="list">
+          <div class="icon">
+            <img src="../../assets/images/icon/icon_coupon.svg" alt="쿠폰" />
+          </div>
+          <div class="desc">
+            <p class="title">댕댕샵 할인쿠폰</p>
+            <p>5장</p>
+          </div>
+        </div>
+      </swiper-slide>
+
+      <!-- clone -->
       <swiper-slide>
         <div class="list">
           <div class="icon">
@@ -159,7 +197,8 @@ export default {
   .listBox2 {
     width: 100%;
     height: 151px;
-    padding: 0 20px;
+    // padding: 0 20px;
+    overflow: hidden;
 
     .swiper-slide {
       width: 102px;
@@ -200,12 +239,21 @@ export default {
       }
     }
 
+    .swiper-slide-prev {
+      padding-left: 20px;
+    }
+
+    .swiper-slide-next {
+      padding-right: 20px;
+    }
+
     .icon {
       display: flex;
       align-items: center;
       justify-content: center;
       height: 72px;
       background-color: var(--white);
+      border-radius: 10px 10px 0 0;
 
       img {
         width: 30px;
@@ -219,6 +267,7 @@ export default {
       background-color: #efeded;
       text-align: center;
       line-height: 1.2;
+      border-radius: 0 0 10px 10px;
 
       p {
         &.title,

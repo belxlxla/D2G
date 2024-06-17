@@ -33,11 +33,8 @@
             <div class="keyword">
               <h4>Keyword</h4>
               <ul>
-                <!-- <li v-for="(keyword, j) in el?.hashtag" :key="j">
+                <li v-for="(keyword, j) in checkHashtag(el.hashtag)" :key="j">
                   <span>#{{ keyword }}</span>
-                </li> -->
-                <li>
-                  <span>#{{ el?.hashtag }}</span>
                 </li>
               </ul>
             </div>
@@ -57,17 +54,21 @@ export default {
     getImage(imageName) {
       return require(`${imageName}`);
     },
+    // 이미지 확인
     checkImagePath(path) {
       if (!path) {
-        return require('../../assets/images/noImg.png');
+        return require('../../assets/images/test_dog3.jpg');
       }
       const validExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'];
       const extension = path.split('.').pop().toLowerCase();
       if (validExtensions.includes(extension)) {
         return path;
       } else {
-        return require('../../assets/images/noImg.png');
+        return require('../../assets/images/test_dog3.jpg');
       }
+    },
+    checkHashtag(hashtag) {
+      return Array.isArray(hashtag) ? hashtag : [hashtag];
     },
   },
   setup() {
@@ -86,7 +87,7 @@ export default {
         if (!response.ok) {
           throw new Error(`Error status: ${response.status}`);
         }
-        
+
         try {
           const res = await response.json();
           const { code, data, msg } = res;

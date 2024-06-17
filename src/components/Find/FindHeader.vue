@@ -1,6 +1,6 @@
 <template>
   <!-- 찾기 상단 네비게이션 -->
-  <div id="findHeader">
+  <div id="findHeader" :class="`${className}`">
     <nav>
       <!-- props받은 title -->
       <h2 class="title">{{ title }}</h2>
@@ -21,6 +21,10 @@ export default {
     title: {
       type: String,
       required: true,
+    },
+    className: {
+      type: String,
+      default: '',
     }
   },
   methods: {
@@ -33,6 +37,10 @@ export default {
 
 <style lang="scss" scoped>
 #findHeader {
+  &.info {
+    padding: 0 20px;
+  }
+
   nav {
     position: relative;
 

@@ -33,12 +33,13 @@
 
           <span>@</span>
 
-          <label for="customDomain" class="blind">도메인 입력</label>
-          <input id="customDomain" name="customDomain" type="text" v-model="customDomain" :disabled="!isCustomDomain" required />
+          <label v-if="emailDomain === 'self'" for="customDomain" class="blind">도메인 입력</label>
+          <input v-if="emailDomain === 'self'" id="customDomain" name="customDomain" type="text" v-model="customDomain" :disabled="!isCustomDomain" required />
 
-          <div class="selectBox">
+          <div v-if="emailDomain !== 'self'" class="selectBox">
             <label for="emailDomain">도메인 선택</label>
             <select id="emailDomain" name="emailDomain" v-model="emailDomain" @change="handleEmailDomainChange" required>
+              <option value="default">선택</option>
               <option value="self">직접입력</option>
               <option value="gmail.com">gmail.com</option>
               <option value="naver.com">naver.com</option>
@@ -67,7 +68,7 @@
         <router-link to="/join" class="joinBtn">회원가입</router-link>
       </div>
     </div>
-    
+
     <!-- 약관 / 개인정보 처리방침 -->
     <div id="loginFooter">
       <ul>
@@ -92,7 +93,7 @@ export default {
   data() {
     return {
       emailUser: '',
-      emailDomain: 'self',
+      emailDomain: 'default',
       customDomain: '',
       isCustomDomain: true,
       email: '',
