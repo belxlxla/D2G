@@ -58,14 +58,16 @@ export default {};
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 10px;
 
     > div {
       text-align: right;
+      width: 50%;
 
       > div {
         display: flex;
         align-items: center;
-        width: 162px;
+        min-width: 162px;
         height: 83px;
         padding-left: 20px;
         background-color: var(--white);

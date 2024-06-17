@@ -76,15 +76,15 @@
         <legend class="blind">개인정보</legend>
         <div class="nameBox">
           <label for="name">이름</label>
-          <input v-model="name" class="inputStyle" type="text" placeholder="이름" disabled required />
+          <input v-model="name" class="inputStyle" id="name" name="name" type="text" placeholder="이름" disabled required />
         </div>
         <div class="birthdayBox">
           <label for="birthday">생년월일</label>
-          <input v-model="birthDay" class="inputStyle" type="text" placeholder="생년월일" disabled required />
+          <input v-model="birthDay" class="inputStyle" id="birthday" name="birthday" type="text" placeholder="생년월일" disabled required />
         </div>
         <div class="mobileNumber">
           <label for="mobile">휴대폰 번호</label>
-          <input v-model="mobile" class="inputStyle" type="text" placeholder="휴대폰번호" disabled required />
+          <input v-model="mobile" class="inputStyle" id="mobile" name="mobile" type="text" placeholder="휴대폰번호" disabled required />
         </div>
 
         <!-- 에러 -->
@@ -287,9 +287,9 @@ export default {
       // const isEmailUnique = await this.checkDuplicateId();
 
       if (isEmailValid && isPasswordValid && isPersonalInfoValid) {
-        console.log(isEmailValid);
-        console.log(isPasswordValid);
-        console.log(isPersonalInfoValid);
+        console.log('이메일 유효성검사:', isEmailValid);
+        console.log('비밀번호 유효성검사:', isPasswordValid);
+        console.log('생년월일, 핸드폰 유효성검사:', isPersonalInfoValid);
 
         this.email = this.isCustomDomain ? `${this.emailUser}@${this.customDomain}` : `${this.emailUser}@${this.emailDomain}`;
         console.log('email:', this.email);
@@ -306,8 +306,7 @@ export default {
       }
 
       // 이메일 중복검사 포함
-      // if (!isEmailUnique || !isEmailValid || !isPasswordValid || !isPersonalInfoValid) {
-      //   return;
+      // if (isEmailUnique && isEmailValid && isPasswordValid && isPersonalInfoValid) {
       // }
 
       return;
@@ -447,13 +446,14 @@ export default {
           font-size: 0;
           background-color: transparent;
           cursor: pointer;
-          width: 20px;
+          width: 19px;
         }
       }
     }
 
     .selectBox {
       position: relative;
+      
       label {
         position: absolute;
         top: 50%;

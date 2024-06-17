@@ -129,6 +129,9 @@ export default {
     // 다음 페이지
     nextPage() {
       window.location.href = '/join/check';
+      
+      // 체크항목 확인
+      // alert(this.checkedList);
     },
   },
   created() {

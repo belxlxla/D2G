@@ -45,12 +45,14 @@ export default {};
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 13px;
 
     .content {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 160px;
+      min-width: 160px;
+      width: 100%;
       height: 138px;
       background-color: var(--white);
       border-radius: 10px;

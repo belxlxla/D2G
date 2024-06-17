@@ -160,7 +160,7 @@ export default {
       font-size: 0;
       background-color: transparent;
       cursor: pointer;
-      width: 20px;
+      width: 16px;
     }
   }
 

@@ -345,10 +345,11 @@ export default {
 
     > .img {
       width: 100%;
-      height: 226px;
+      min-height: 226px;
       margin-bottom: 20px;
       border-radius: 10px;
       overflow: hidden;
+      object-fit: cover;
     }
 
     > h4 {

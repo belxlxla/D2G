@@ -8,7 +8,10 @@
 
     <div class="magazine">
       <router-link to="#">
-        <img src="../../assets/images/test_dog2.jpg" alt="today magazine" />
+        <div class="img">
+          <img src="../../assets/images/test_dog2.jpg" alt="today magazine" />
+        </div>
+
         <h4>2024, 5월호, 비숑프리제</h4>
       </router-link>
     </div>
@@ -33,16 +36,16 @@ export default {};
     a {
       font-size: 0.75rem;
       font-weight: 400;
-      color: #B8B6C0;
+      color: #b8b6c0;
     }
   }
 
   .magazine {
     a {
-      img {
-        width: 100%;
-        height: 165px;
+      .img {
         border-radius: 10px;
+        overflow: hidden;
+        object-fit: cover;
       }
 
       h4 {
